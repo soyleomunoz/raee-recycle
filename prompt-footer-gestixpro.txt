@@ -1,0 +1,45 @@
+Agregá a este sitio el siguiente patrón de botones flotantes y pie de página, tal como se detalla:
+
+BOTONES FLOTANTES
+1. Botón de WhatsApp
+   - Posición fija, esquina inferior derecha.
+   - Forma circular, solo ícono (sin texto), tamaño ~60px.
+   - Color de fondo #25D366 (verde WhatsApp oficial), ícono blanco.
+   - Animación de pulso/ondas continua alrededor del botón (anillo que se expande y se desvanece en bucle).
+   - Siempre visible, con una pequeña animación de entrada al cargar la página.
+   - Al hacer clic abre: https://wa.me/[TELEFONO]?text=[MENSAJE_URL_ENCODED]
+   - El teléfono y el mensaje deben ser variables configurables al inicio del script (una sola vez), no hardcodeadas en el href.
+
+2. Botón "Subir arriba"
+   - Posición fija, esquina inferior derecha, ARRIBA del botón de WhatsApp, con separación visual clara entre ambos (mínimo 14-20px de espacio).
+   - Forma circular, ícono de flecha hacia arriba, fondo blanco/neutro con acento de color primario del sitio en hover.
+   - Oculto por defecto (opacity:0, sin interacción); aparece con transición suave cuando el usuario hace scroll hacia abajo más de ~700px, y desaparece si vuelve arriba.
+   - Al hacer clic hace scroll suave hasta el inicio de la página.
+
+3. Badge/botón "Desarrollado por GestixPro"
+   - Posición fija, esquina inferior IZQUIERDA (para no chocar con los botones de la derecha).
+   - Elemento <a> (no <div>), enlaza a https://gestixpro.cl/ y abre en pestaña nueva (target="_blank" rel="noopener").
+   - Forma de píldora (border-radius alto), con un pequeño ícono (por ejemplo flecha o corchetes </> ) + el texto "Desarrollado por GestixPro" como texto continuo (sin espacios extra, sin &nbsp;).
+   - Fondo con gradiente usando los colores primarios/secundarios del sitio (ej. degradado entre el color principal y el secundario de la marca), texto blanco.
+   - Efecto hover: se eleva levemente (translateY) y aumenta la sombra.
+   - Reducir tamaño de padding/fuente en mobile (breakpoint ~620px), sin ocultar el texto.
+
+PIE DE PÁGINA (última fila del footer)
+   - Una fila inferior del footer, separada del resto por un borde superior sutil (1px, color translúcido acorde al fondo oscuro del footer).
+   - Layout flex con "justify-content: space-between", wrap en mobile.
+   - IZQUIERDA: texto de copyright, ejemplo: "© [AÑO] [Nombre del sitio]. Todos los derechos reservados."
+     - El año DEBE generarse automáticamente con JavaScript (new Date().getFullYear()), nunca hardcodeado.
+   - DERECHA: texto "Hecho con 💛 en [Ciudad], [País] · Desarrollado por GestixPro"
+     - La palabra "GestixPro" debe ser un link real (<a href="https://gestixpro.cl/" target="_blank" rel="noopener">) dentro de ese texto, con color levemente más claro/acentuado que el resto y que cambie de color en hover.
+     - "[Ciudad], [País]" debe depender de la selección de país/región del usuario si el sitio tiene un selector de país (ej. Argentina → "Córdoba, Argentina"; Chile → "Santiago, Chile"). Si el sitio NO tiene selector de país o solo opera en una región, usar por defecto "Santiago, Chile".
+     - Color de texto discreto (gris claro translúcido sobre fondo oscuro del footer), consistente con el resto de textos secundarios del footer.
+
+ESTILO Y COLORES
+   - Todos los colores (fondo del badge, hover del link GestixPro, color del anillo de pulso si aplica, colores de acento en hover) deben tomarse de las variables/paleta de colores YA EXISTENTE en el sitio (colores primario, secundario y de acento de la marca), no colores inventados ni genéricos, para que el patrón se vea integrado y no como un elemento pegado.
+   - Mantener proporciones, radios de borde y sombras consistentes con el resto de los componentes del sitio (botones, tarjetas, etc.).
+
+COMPORTAMIENTO RESPONSIVE
+   - En mobile, los tres elementos flotantes deben seguir siendo utilizables sin superponerse entre sí ni tapar contenido importante (formularios, CTAs).
+   - El texto del badge de GestixPro puede reducir tamaño de fuente en mobile, pero nunca debe perder el enlace ni truncar el texto de forma que quede ilegible.
+
+Implementalo reutilizando la estructura de componentes/estilos que ya existan en este proyecto (variables CSS, sistema de diseño, JS de la página) en lugar de crear un sistema paralelo.
