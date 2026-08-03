@@ -1,0 +1,648 @@
+Landing RAEE-Recycle
+------------------
+
+EJECUCIÓN INMEDIATA – MODO PRODUCCIÓN
+
+⚠️ REGLA CRÍTICA DE CONTEXTO:
+Ignora completamente cualquier conversación previa, memoria o contexto anterior. Esta generación debe ser 100% limpia, independiente y sin reutilizar ningún contenido previo. No mezclar datos de otros proyectos bajo ninguna circunstancia.
+
+⚠️ REGLAS DE SALIDA:
+
+* No expliques nada
+* No hagas preguntas
+* No agregues texto fuera del código
+* Tu única salida debe ser un archivo HTML completo listo para producción
+
+---
+
+ROL:
+Actúa como un diseñador web senior, experto en UX/UI, copywriter de alta conversión y desarrollador front-end avanzado.
+
+Estás en MODO PRODUCCIÓN, no en modo explicación.
+
+---
+
+SECCIÓN DE CONTEXTO DEL NEGOCIO (OBLIGATORIA)
+
+Utiliza exclusivamente esta información como base para TODO el contenido de la landing:
+
+Tipo de negocio:
+Empresa especializada en reciclaje electrónico (RAEE), gestión ambiental y valorización de residuos tecnológicos.
+
+Nombre de la empresa:
+RAEE-Recycle
+
+Descripción del negocio:
+RAEE-Recycle es una empresa especializada en la recolección, transporte, clasificación y valorización de residuos de aparatos eléctricos y electrónicos (RAEE). Ayuda a empresas, instituciones públicas, establecimientos educacionales y personas a gestionar responsablemente sus residuos tecnológicos, promoviendo la economía circular, la sostenibilidad y el cumplimiento de la normativa ambiental vigente.
+
+Público objetivo:
+
+• Empresas privadas
+• Organismos públicos
+• Municipalidades
+• Colegios, universidades e instituciones educativas
+• Industrias
+• Centros médicos
+• Pymes
+• Personas que desean reciclar equipos electrónicos
+
+Problemas que resuelve:
+
+• Acumulación de residuos electrónicos sin un destino adecuado.
+• Riesgo ambiental por la eliminación incorrecta de equipos tecnológicos.
+• Necesidad de cumplir con la Ley REP y normativas ambientales.
+• Falta de trazabilidad en el manejo de residuos electrónicos.
+• Empresas que buscan mejorar sus indicadores ESG y sostenibilidad.
+• Recuperación de espacio eliminando equipos obsoletos.
+
+Servicios principales:
+
+• Retiro de residuos electrónicos en empresas e instituciones.
+• Reciclaje y valorización de equipos eléctricos y electrónicos.
+• Gestión integral de residuos tecnológicos.
+• Destrucción certificada de equipos y almacenamiento digital.
+• Destrucción segura de discos duros y medios de almacenamiento.
+• Emisión de certificados de disposición final.
+• Asesoría en economía circular y sostenibilidad.
+• Campañas de reciclaje electrónico para empresas y comunidades.
+
+Propuesta de valor única:
+
+Gestionamos responsablemente los residuos electrónicos mediante procesos seguros, certificados y sustentables, contribuyendo al cuidado del medio ambiente, la economía circular y el cumplimiento normativo.
+
+Tono de comunicación:
+
+Profesional, cercano, transparente, confiable, innovador y comprometido con la sostenibilidad.
+
+Ubicación:
+
+Santiago, Chile y Córdoba, Argentina.
+
+⚠️ TODO el copy, estructura y diseño deben adaptarse específicamente a este negocio.
+
+---
+
+TAREA:
+
+Construye una landing page moderna, profesional y lista para deploy en un único archivo HTML con CSS y JavaScript embebidos.
+
+⚠️ NO debe ser HTML simple. Debe parecer un sitio corporativo de alto nivel.
+
+---
+
+ESTRUCTURA OBLIGATORIA
+
+1. Navbar fija (Sticky)
+
+• Logo a la izquierda
+• Navegación con scroll suave
+• Cambio de fondo al hacer scroll
+• Botón "Solicitar Retiro"
+
+---
+
+2. Hero Section
+
+Debe transmitir inmediatamente:
+
+"Reciclamos tecnología. Protegemos el futuro."
+
+Debe incluir:
+
+• Headline altamente persuasivo
+• Subheadline enfocado en sostenibilidad y cumplimiento ambiental
+• CTA primario:
+"Solicitar retiro"
+• CTA secundario:
+"Conocer nuestros servicios"
+
+Visual:
+
+• Fondo con gradiente verde + azul
+• Elementos gráficos tecnológicos
+• Íconos ambientales
+• Sensación de innovación y confianza
+
+---
+
+3. Servicios
+
+Mostrar mediante cards modernas e interactivas:
+
+• Recolección de RAEE
+• Valorización y reciclaje
+• Destrucción certificada
+• Gestión ambiental para empresas
+• Certificados de disposición final
+• Campañas de reciclaje
+• Economía circular
+• Asesoría Ley REP
+
+Cada card debe tener:
+
+• SVG inline
+• Hover elegante
+• Animación al aparecer
+
+---
+
+4. Impacto Ambiental
+
+Sección visual con indicadores animados.
+
+Ejemplo:
+
+✓ Toneladas recicladas
+✓ Equipos recuperados
+✓ Empresas atendidas
+✓ CO₂ evitado
+✓ Materiales valorizados
+
+Utilizar contadores animados.
+
+---
+
+5. Beneficios
+
+Cards con iconografía.
+
+Beneficios como:
+
+• Cumplimiento Ley REP
+• Protección del medio ambiente
+• Seguridad en la destrucción de información
+• Certificación de disposición final
+• Economía circular
+• Responsabilidad social empresarial
+• Trazabilidad completa
+• Servicio rápido y confiable
+
+---
+
+6. Sobre Nosotros
+
+Transmitir:
+
+• Experiencia
+• Innovación
+• Compromiso ambiental
+• Procesos certificados
+• Equipo especializado
+• Economía circular
+• Cobertura nacional e internacional
+
+---
+
+7. Cómo Trabajamos
+
+Timeline de 5 pasos:
+
+1. Solicitud
+2. Evaluación
+3. Retiro
+4. Clasificación y reciclaje
+5. Certificación final
+
+Cada paso con ícono moderno.
+
+---
+
+8. Sectores que Atendemos
+
+Grid con iconos:
+
+• Empresas
+• Industria
+• Educación
+• Salud
+• Gobierno
+• Retail
+• Minería
+• Personas
+
+---
+
+9. Testimonios
+
+Slider funcional en JavaScript.
+
+Crear testimonios ficticios pero muy realistas de:
+
+• Gerente de empresa
+• Municipalidad
+• Universidad
+• Centro médico
+
+---
+
+10. BLOG / CONTENIDO DE VALOR (OBLIGATORIO)
+
+Crear 3 artículos ficticios pero realistas.
+
+Temáticas:
+
+• ¿Qué son los residuos RAEE y por qué es importante reciclarlos?
+• Cómo cumplir con la Ley REP en Chile.
+• Beneficios ambientales y económicos de la economía circular.
+
+Cada uno con:
+
+• Imagen ilustrativa (placeholder)
+• Fecha
+• Categoría
+• Resumen
+• Botón "Leer más"
+
+---
+
+11. FAQ
+
+Acordeón interactivo.
+
+Preguntas sugeridas:
+
+• ¿Qué equipos reciben?
+• ¿Entregan certificado?
+• ¿Realizan retiro en empresas?
+• ¿Cómo destruyen la información?
+• ¿Trabajan con municipalidades?
+• ¿Qué es la Ley REP?
+
+---
+
+12. Formulario de Contacto
+
+Campos:
+
+• Nombre
+• Empresa
+• Email
+• Teléfono
+• Ciudad
+• Tipo de servicio
+• Mensaje
+
+JavaScript:
+
+• Validación
+• Feedback visual
+• Simulación de envío
+
+---
+
+13. Botón flotante WhatsApp
+
+Número:
+
++56975233425
+
+Mensaje:
+
+"Hola, quiero solicitar información sobre reciclaje electrónico."
+
+Animación suave.
+
+---
+
+14. CTA Final
+
+Gran bloque de conversión.
+
+Título sugerido:
+
+"Dale una segunda vida a la tecnología y ayuda a proteger el planeta."
+
+Botón:
+
+"Solicitar retiro"
+
+---
+
+15. Footer completo
+
+Debe incluir:
+
+Empresa
+
+Servicios
+
+Cobertura
+
+Información Legal
+
+Redes Sociales
+
+Datos de contacto
+
+Copyright
+
+---
+
+IDENTIDAD VISUAL
+
+Paleta principal
+
+Verde principal
+
+#16A34A
+
+Representa:
+
+• Medio ambiente
+• Sustentabilidad
+• Economía circular
+
+---
+
+Verde oscuro
+
+#166534
+
+Uso:
+
+Header
+
+Footer
+
+Fondos destacados
+
+---
+
+Azul tecnológico
+
+#0F4C81
+
+Representa:
+
+Tecnología
+
+Innovación
+
+Confianza
+
+---
+
+Azul claro
+
+#38BDF8
+
+Uso:
+
+Gradientes
+
+Botones secundarios
+
+Detalles
+
+---
+
+Blanco
+
+#FFFFFF
+
+Fondos
+
+Espacios
+
+Contenido
+
+---
+
+Gris claro
+
+#F5F7FA
+
+Fondos alternos
+
+Cards
+
+Separaciones
+
+---
+
+Gris oscuro
+
+#374151
+
+Texto principal
+
+---
+
+Gradientes sugeridos
+
+Hero:
+
+Verde → Azul
+
+Secciones:
+
+Blanco + Gris claro
+
+Footer:
+
+Verde oscuro
+
+Botones:
+
+Verde
+
+Hover:
+
+Azul
+
+---
+
+REQUISITOS TÉCNICOS
+
+HTML
+
+• Semántico
+• SEO optimizado
+• Meta Tags
+• Open Graph
+• Schema.org Organization
+• Favicon placeholder
+
+CSS
+
+• Mobile First
+• Flexbox
+• CSS Grid
+• Variables CSS
+• Glassmorphism ligero
+• Sombras modernas
+• Animaciones
+• Hover Premium
+• Responsive completo
+
+JavaScript
+
+• Scroll suave
+• Navbar dinámica
+• Intersection Observer
+• Contadores animados
+• Slider testimonios
+• FAQ acordeón
+• Validación formulario
+• Simulación envío
+• Botón volver arriba
+• Lazy animations
+
+---
+
+DISEÑO Y UX
+
+• Tipografía moderna (Google Fonts)
+• Diseño corporativo premium
+• Espaciado amplio
+• Mucho aire visual
+• Botones llamativos
+• Animaciones elegantes
+• Ilustraciones SVG
+• Apariencia similar a empresas tecnológicas y de sostenibilidad de nivel internacional
+• Alto enfoque en conversión
+
+---
+
+SEO
+
+Optimizar para palabras clave como:
+
+• reciclaje electrónico
+• RAEE
+• reciclaje tecnológico
+• residuos electrónicos
+• gestión RAEE
+• Ley REP
+• economía circular
+• reciclaje de computadores
+• reciclaje de notebooks
+• reciclaje de servidores
+• reciclaje de equipos electrónicos
+• destrucción certificada
+• valorización de residuos
+
+---
+
+RESTRICCIONES CRÍTICAS
+
+• NO utilizar Bootstrap
+• NO utilizar Tailwind
+• NO utilizar React
+• NO utilizar Vue
+• NO utilizar librerías JavaScript externas
+
+Únicamente:
+
+HTML
+
+CSS
+
+JavaScript puro
+
+Todo embebido en un solo archivo.
+
+Código limpio.
+
+Comentado.
+
+Optimizado.
+
+Listo para producción.
+
+---
+
+SALIDA FINAL
+
+Devuelve exclusivamente el archivo HTML completo.
+
+Sin explicaciones.
+
+Sin comentarios fuera del código.
+
+Sin texto adicional.
+
+🌎 INTERNACIONALIZACIÓN (OBLIGATORIO)
+
+⚠️ ESTA SECCIÓN ES DE CUMPLIMIENTO OBLIGATORIO.
+
+La landing debe funcionar para dos mercados:
+
+🇦🇷 Argentina
+🇨🇱 Chile
+
+Toda la información debe adaptarse automáticamente dependiendo del país desde donde el usuario visita el sitio.
+
+Detección automática
+
+Al cargar la página:
+
+Detectar el país del visitante utilizando una API pública de geolocalización por IP.
+Si el visitante proviene de Argentina, cargar automáticamente el contenido argentino.
+Si el visitante proviene de Chile, cargar automáticamente el contenido chileno.
+Si no es posible detectar el país, mostrar por defecto Argentina.
+Cambio manual (OBLIGATORIO)
+
+En la barra de navegación debe existir un selector de país visible.
+
+Opciones:
+
+🇦🇷 Argentina
+🇨🇱 Chile
+
+Debe permitir cambiar inmediatamente toda la información del sitio sin recargar la página.
+
+El selector es únicamente para pruebas y también para que el usuario pueda cambiar manualmente de país.
+
+Contenido que debe cambiar automáticamente
+
+Cambiar absolutamente todo el contenido relacionado con el país:
+
+textos
+vocabulario
+modismos
+llamadas a la acción
+datos de contacto
+ubicación
+testimonios
+preguntas frecuentes
+servicios
+beneficios
+información legal
+formularios
+WhatsApp
+botones
+footer
+SEO
+Meta Tags
+Open Graph
+
+Toda la información debe sentirse escrita específicamente para ese país.
+
+Ejemplo:
+
+Argentina:
+
+vos
+necesitás
+escribinos
+conocé
+empresa
+reciclaje de RAEE en Argentina
+
+Chile:
+
+tú
+necesitas
+escríbenos
+conoce
+empresa
+reciclaje de RAEE en Chile
+
+No se permite utilizar el mismo texto cambiando únicamente algunas palabras.
+
+Cada versión debe tener copywriting independiente y adaptado culturalmente.
+
+Obligatorio:
+
+- Usa las siguientes skills: frontend-design, emil kowalski, ui-ux-pro-max y taste-skill 
