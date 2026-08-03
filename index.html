@@ -496,6 +496,47 @@
     .post-link { margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: .9rem; color: var(--green-dark); transition: color 180ms ease, gap 200ms var(--ease-out); }
     .post-link:hover { color: var(--blue); gap: 11px; }
     .post-link svg { width: 16px; height: 16px; }
+    .post-cover, .post-link { cursor: pointer; }
+
+    /* ============ Modal de artículo ============ */
+    .post-modal-overlay {
+      position: fixed; inset: 0; z-index: 1300;
+      background: rgba(11, 22, 17, .58); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+      opacity: 0; visibility: hidden; transition: opacity 260ms ease, visibility 260ms ease;
+    }
+    .post-modal-overlay.open { opacity: 1; visibility: visible; }
+    .post-modal {
+      background: #fff; border-radius: var(--radius-lg); width: min(720px, 100%);
+      max-height: min(88vh, 860px); overflow: hidden; display: flex; flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      transform: scale(.94) translateY(18px); transition: transform 320ms var(--ease-out);
+    }
+    .post-modal-overlay.open .post-modal { transform: scale(1) translateY(0); }
+    .post-modal-cover {
+      position: relative; flex: none; aspect-ratio: 16/6.2; display: grid; place-items: center; overflow: hidden;
+      background: linear-gradient(135deg, var(--green-dark), var(--blue));
+    }
+    .post-modal-cover-icon svg { width: 64px; height: 64px; color: rgba(255,255,255,.92); }
+    .post-modal-close {
+      position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); color: #fff;
+      backdrop-filter: blur(8px); display: grid; place-items: center;
+      transition: background-color 180ms ease, transform 160ms var(--ease-out);
+    }
+    .post-modal-close:hover { background: rgba(255,255,255,.3); }
+    .post-modal-close:active { transform: scale(0.92); }
+    .post-modal-close svg { width: 18px; height: 18px; }
+    .post-modal-body { padding: 30px 32px 40px; overflow-y: auto; }
+    .post-modal-body h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); margin: 14px 0 20px; }
+    .post-modal-content p { font-size: .98rem; color: #4a5670; margin-bottom: 16px; }
+    .post-modal-content p:last-child { margin-bottom: 0; }
+    body.modal-open { overflow: hidden; }
+    @media (max-width: 620px) {
+      .post-modal-overlay { padding: 0; align-items: flex-end; }
+      .post-modal { width: 100%; max-height: 92vh; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+      .post-modal-body { padding: 24px 22px 32px; }
+    }
 
     /* ============ FAQ ============ */
     .faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 12px; }
@@ -513,6 +554,29 @@
     .faq-a-inner { overflow: hidden; }
     .faq-item.open .faq-a { grid-template-rows: 1fr; }
     .faq-a p { padding: 0 24px 22px; font-size: .93rem; color: #5b6880; }
+
+    /* ============ Puntos de reciclaje ============ */
+    .points-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: stretch; }
+    .points-map { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); min-height: 380px; border: 1px solid var(--gray-200); }
+    .points-map iframe { width: 100%; height: 100%; min-height: 380px; border: 0; display: block; }
+    .points-list { display: flex; flex-direction: column; gap: 22px; }
+    .points-group h3 { font-size: .84rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green-dark); margin-bottom: 12px; }
+    .points-group ul { display: grid; gap: 10px; }
+    .point-item {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: #fff;
+      border: 1px solid var(--gray-200); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);
+      transition: transform 200ms var(--ease-out), border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .point-item:hover { transform: translateY(-3px); border-color: var(--sky); box-shadow: var(--shadow-md); }
+    .point-item .pin-icon { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: #E3F3FD; color: var(--blue); }
+    .point-item .pin-icon svg { width: 17px; height: 17px; }
+    .point-item a { font-weight: 600; font-size: .93rem; color: var(--ink-strong); line-height: 1.4; }
+    .point-item a:hover { color: var(--green-dark); text-decoration: underline; }
+    @media (max-width: 900px) {
+      .points-layout { grid-template-columns: 1fr; }
+      .points-map { min-height: 300px; }
+      .points-map iframe { min-height: 300px; }
+    }
 
     /* ============ Contacto ============ */
     .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
@@ -813,6 +877,18 @@
       </div>
     </section>
 
+    <!-- ============ QUÉ RECICLAMOS ============ -->
+    <section class="section section-alt" id="materiales">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" id="mt-eyebrow"></span>
+          <h2 id="mt-title"></h2>
+          <p id="mt-sub"></p>
+        </div>
+        <div class="sectors-grid" id="mt-grid"></div>
+      </div>
+    </section>
+
     <!-- ============ IMPACTO ============ -->
     <section class="section impact" id="impacto">
       <div class="container">
@@ -938,6 +1014,23 @@
           <p id="fq-sub"></p>
         </div>
         <div class="faq-list" id="fq-list"></div>
+      </div>
+    </section>
+
+    <!-- ============ PUNTOS DE RECICLAJE ============ -->
+    <section class="section section-alt" id="puntos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" id="rp-eyebrow"></span>
+          <h2 id="rp-title"></h2>
+          <p id="rp-sub"></p>
+        </div>
+        <div class="points-layout reveal">
+          <div class="points-map">
+            <iframe id="rp-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Mapa de puntos de reciclaje"></iframe>
+          </div>
+          <div class="points-list" id="rp-list"></div>
+        </div>
       </div>
     </section>
 
@@ -1099,6 +1192,23 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-7 7 7-7 7 7"/></svg>
   </button>
 
+  <!-- ============ MODAL ARTÍCULO DE BLOG ============ -->
+  <div class="post-modal-overlay" id="post-modal-overlay" role="presentation">
+    <div class="post-modal" role="dialog" aria-modal="true" aria-labelledby="pm-title" id="post-modal" tabindex="-1">
+      <div class="post-modal-cover" id="pm-cover">
+        <button class="post-modal-close" id="pm-close" aria-label="Cerrar artículo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="post-modal-cover-icon" id="pm-cover-icon"></div>
+      </div>
+      <div class="post-modal-body">
+        <div class="post-meta"><span class="post-cat" id="pm-cat"></span><span class="post-date" id="pm-date"></span></div>
+        <h2 id="pm-title"></h2>
+        <div class="post-modal-content" id="pm-content"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
   'use strict';
   /* ============================================================
@@ -1144,6 +1254,12 @@
     pin: I('<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>'),
     phone: I('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/>'),
     mail: I('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>'),
+    laptop: I('<rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M2 19h20l-1.5-3h-17z"/>'),
+    server: I('<rect x="3" y="4" width="18" height="6" rx="1.2"/><rect x="3" y="14" width="18" height="6" rx="1.2"/><path d="M7 7h.01M7 17h.01"/>'),
+    cable: I('<path d="M6 7h12l-1 5a5 5 0 0 1-10 0z"/><path d="M9 3v4M15 3v4M12 16v5"/>'),
+    printer: I('<path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1.2"/><path d="M6 17v4h12v-4"/>'),
+    mobile: I('<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>'),
+    battery: I('<rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4"/><path d="M6 10v4M10 10v4"/>'),
     quote: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 5C6 6.5 3.8 9.4 3.8 13.4c0 3.2 1.9 5.6 4.6 5.6 2.3 0 4-1.7 4-4 0-2.1-1.5-3.7-3.6-3.7-.3 0-.7.05-.9.1.4-1.9 2-3.6 3.9-4.5L9.6 5zm10 0c-3.6 1.5-5.8 4.4-5.8 8.4 0 3.2 1.9 5.6 4.6 5.6 2.3 0 4-1.7 4-4 0-2.1-1.5-3.7-3.6-3.7-.3 0-.7.05-.9.1.4-1.9 2-3.6 3.9-4.5L19.6 5z"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>'
   };
@@ -1181,6 +1297,15 @@
           { i: 'scale', t: 'Asesoría normativa', d: 'Te asesoramos sobre la normativa ambiental argentina de residuos peligrosos y especiales para que operes con tranquilidad.' }
         ]
       },
+      materials: {
+        eyebrow: 'Qué reciclamos', title: '¿Qué reciclamos?',
+        sub: 'Recibimos una amplia variedad de residuos electrónicos provenientes de empresas. Todos estos dispositivos pueden tener una segunda vida a través del reciclaje responsable, aportando al cuidado del medio ambiente y promoviendo una gestión tecnológica sostenible.',
+        items: [
+          { i: 'monitor', t: 'Monitores' }, { i: 'box', t: 'Computadoras' }, { i: 'laptop', t: 'Notebooks' }, { i: 'server', t: 'Servidores' },
+          { i: 'layers', t: 'Racks' }, { i: 'cable', t: 'Cables' }, { i: 'phone', t: 'Teléfonos' }, { i: 'route', t: 'Switches' },
+          { i: 'printer', t: 'Impresoras' }, { i: 'mobile', t: 'Celulares' }, { i: 'building', t: 'Centrales telefónicas' }, { i: 'battery', t: 'UPS' }
+        ]
+      },
       impact: {
         eyebrow: 'Nuestro impacto', title: 'Resultados que se miden en planeta',
         sub: 'Cada retiro suma. Estos son los números que construimos junto a las organizaciones que ya reciclan con nosotros.',
@@ -1209,8 +1334,8 @@
       about: {
         eyebrow: 'Sobre nosotros', title: 'Un equipo que convierte residuos en futuro',
         paras: [
-          'RAEE-Recycle nació con una convicción simple: la tecnología que ya no usás todavía tiene muchísimo para dar. Somos especialistas en la recolección, transporte, clasificación y valorización de residuos de aparatos eléctricos y electrónicos.',
-          'Trabajamos con empresas, organismos públicos, escuelas y universidades de Argentina y Chile, combinando procesos certificados, innovación constante y un compromiso ambiental que se nota en cada retiro.'
+          'RAEE-Recycle nació con una convicción simple: la tecnología que ya no usás todavía tiene muchísimo para dar. Somos especialistas en la recolección, transporte, clasificación y valorización de residuos de aparatos eléctricos y electrónicos, y trabajamos con empresas, organismos públicos, escuelas y universidades de Argentina y Chile, combinando procesos certificados, innovación constante y un compromiso ambiental que se nota en cada retiro.',
+          'Nacimos al amparo de Fundación Caecuslab, donde comprobamos que reciclaje, accesibilidad y desarrollo humano pueden ir de la mano: parte de los equipos que recuperamos se reacondicionan y se transforman en Anny, los lentes inteligentes de Caecuslab que mejoran la autonomía de personas con discapacidad visual, mientras que otros se destinan a formaciones educativas, talleres digitales y proyectos comunitarios.'
         ],
         points: ['Más de una década de experiencia', 'Procesos certificados y auditables', 'Equipo técnico especializado', 'Innovación aplicada al reciclaje', 'Compromiso ambiental verificable', 'Cobertura nacional e internacional'],
         card1: 'años impulsando la economía circular', card2: 'países: Argentina y Chile'
@@ -1249,9 +1374,30 @@
         sub: 'Guías, novedades y buenas prácticas de gestión de residuos tecnológicos.',
         readMore: 'Leer más',
         posts: [
-          { cover: 'cv1', icon: 'recycle', cat: 'Educación ambiental', date: '12 de junio de 2026', t: '¿Qué son los residuos RAEE y por qué es clave reciclarlos?', d: 'Cada año se generan millones de toneladas de residuos electrónicos en el mundo. Te contamos qué son los RAEE, qué materiales contienen y por qué reciclarlos protege la salud y el ambiente.' },
-          { cover: 'cv2', icon: 'scale', cat: 'Normativa', date: '28 de mayo de 2026', t: 'Residuos electrónicos en Argentina: lo que tu empresa necesita saber', d: 'Ley de Residuos Peligrosos, normas provinciales y responsabilidades del generador: una guía práctica para que tu organización gestione sus RAEE sin riesgos legales.' },
-          { cover: 'cv3', icon: 'loop', cat: 'Economía circular', date: '9 de mayo de 2026', t: 'Beneficios ambientales y económicos de la economía circular', d: 'Reciclar no es solo cuidar el planeta: también reduce costos, recupera materiales valiosos y abre nuevas oportunidades de negocio. Mirá cómo aplicarla en tu empresa.' }
+          { cover: 'cv1', icon: 'recycle', cat: 'Educación ambiental', date: '12 de junio de 2026', t: '¿Qué son los residuos RAEE y por qué es clave reciclarlos?', d: 'Cada año se generan millones de toneladas de residuos electrónicos en el mundo. Te contamos qué son los RAEE, qué materiales contienen y por qué reciclarlos protege la salud y el ambiente.',
+            body: [
+              'RAEE significa Residuos de Aparatos Eléctricos y Electrónicos: todo equipo que funciona con electricidad o baterías y que llegó al final de su vida útil. Computadoras, notebooks, celulares, impresoras, monitores, cables y hasta electrodomésticos entran en esta categoría, que hoy es una de las corrientes de residuos que más rápido crece en el mundo.',
+              'El problema no es solo el volumen. Muchos de estos equipos contienen metales pesados como plomo, mercurio o cadmio, que si terminan en un basural a cielo abierto pueden contaminar el suelo y las napas de agua durante años. Al mismo tiempo, guardan materiales valiosos: oro, cobre, plata y plásticos técnicos que pueden recuperarse y volver a producir.',
+              'Reciclar RAEE de forma correcta significa separarlos de la basura común y entregarlos a gestores habilitados, que se encargan de clasificarlos, desarmarlos y darles el tratamiento adecuado a cada componente. Así se evita la contaminación y, además, se recuperan recursos que de otra forma se perderían para siempre.',
+              'Para las empresas, sumarse a este circuito no es solo una decisión ambiental: también es una forma de cumplir con la normativa vigente, cuidar la información sensible que guardan sus equipos y mostrar un compromiso concreto ante clientes, empleados y organismos de control.',
+              'En RAEE-Recycle nos ocupamos de todo el proceso, del retiro a la certificación final, para que tu organización pueda sumarse a la economía circular sin complicaciones.'
+            ] },
+          { cover: 'cv2', icon: 'scale', cat: 'Normativa', date: '28 de mayo de 2026', t: 'Residuos electrónicos en Argentina: lo que tu empresa necesita saber', d: 'Ley de Residuos Peligrosos, normas provinciales y responsabilidades del generador: una guía práctica para que tu organización gestione sus RAEE sin riesgos legales.',
+            body: [
+              'En Argentina, los residuos electrónicos que contienen componentes peligrosos quedan alcanzados por la Ley Nacional 24.051 de Residuos Peligrosos, que establece obligaciones para quienes generan, transportan y tratan este tipo de residuos. A eso se suman normas provinciales y municipales, que pueden agregar requisitos específicos según la jurisdicción donde opere tu empresa.',
+              'La ley pone el foco en la responsabilidad del generador: la organización que produce el residuo es responsable de su destino final, incluso después de entregarlo a un tercero. Por eso es clave trabajar con gestores habilitados que puedan demostrar, con documentación, qué pasó con cada equipo desde que sale de tus instalaciones hasta su disposición final.',
+              'En la práctica, esto significa que una empresa no puede simplemente descartar sus equipos en desuso junto con la basura común, ni entregarlos a cualquier intermediario informal. Hacerlo puede derivar en sanciones y, sobre todo, en un riesgo reputacional si esos residuos terminan mal gestionados.',
+              'Contar con un certificado de disposición final es la mejor forma de respaldar el cumplimiento normativo ante auditorías, licitaciones o reportes de sustentabilidad. Ese documento acredita qué equipos se retiraron, cuándo y qué tratamiento recibieron.',
+              'En RAEE-Recycle acompañamos a empresas y organismos públicos de todo el país para que gestionen sus residuos electrónicos cumpliendo la normativa vigente, con trazabilidad completa y sin dolores de cabeza.'
+            ] },
+          { cover: 'cv3', icon: 'loop', cat: 'Economía circular', date: '9 de mayo de 2026', t: 'Beneficios ambientales y económicos de la economía circular', d: 'Reciclar no es solo cuidar el planeta: también reduce costos, recupera materiales valiosos y abre nuevas oportunidades de negocio. Mirá cómo aplicarla en tu empresa.',
+            body: [
+              'La economía circular propone un cambio de mirada: en lugar de fabricar, usar y descartar, busca que los productos y materiales permanezcan en uso el mayor tiempo posible. Aplicada a la tecnología, significa reparar, reacondicionar y reciclar equipos antes de pensar en descartarlos.',
+              'Los beneficios ambientales son directos: menos residuos en rellenos sanitarios, menor extracción de materias primas vírgenes y una reducción real de la huella de carbono asociada a la fabricación de equipos nuevos. Cada tonelada de metales y plásticos recuperada es una tonelada que no hace falta extraer de la naturaleza.',
+              'Pero el impacto no es solo ambiental. Para las empresas, sumarse a la economía circular también tiene sentido económico: reduce costos de disposición de residuos, mejora los indicadores ESG que hoy piden inversores y clientes, y en muchos casos abre la puerta a nuevas líneas de negocio ligadas a la sustentabilidad.',
+              'Además, mostrar un compromiso concreto con el reciclaje fortalece la marca empleadora y la reputación ante la comunidad, algo cada vez más valorado tanto por consumidores como por el talento que una organización busca atraer.',
+              'Sumar tu empresa a este modelo es más simple de lo que parece: alcanza con elegir un gestor certificado, como RAEE-Recycle, que se ocupe de todo el proceso y te entregue la trazabilidad y la documentación que necesitás.'
+            ] }
         ]
       },
       faq: {
@@ -1264,6 +1410,27 @@
           { q: '¿Cómo destruyen la información?', a: 'Los discos rígidos y medios de almacenamiento se destruyen físicamente mediante procesos irreversibles. Podés presenciar la destrucción o recibir el registro documentado con evidencia del proceso.' },
           { q: '¿Trabajan con municipalidades?', a: 'Sí. Acompañamos a municipios de todo el país con campañas de recolección, puntos limpios y programas de educación ambiental para los vecinos.' },
           { q: '¿Qué normativa aplica en Argentina?', a: 'Los RAEE con componentes peligrosos se rigen por la Ley 24.051 de Residuos Peligrosos y las normas de cada provincia. Nuestro equipo te asesora para que tu organización cumpla con todos los requisitos vigentes.' }
+        ]
+      },
+      recyclingPoints: {
+        eyebrow: 'Puntos de reciclaje', title: 'Puntos de reciclaje',
+        sub: 'En este mapa vas a encontrar los puntos de recolección habilitados donde podés llevar tus equipos electrónicos en desuso para su reciclaje responsable. Cada ubicación fue verificada y está preparada para recibir dispositivos como computadoras, notebooks, impresoras, celulares y más. Elegí el punto más cercano y sumate al compromiso con la tecnología sustentable.',
+        mapQuery: 'Córdoba, Argentina',
+        groups: [
+          {
+            t: 'Puntos de recolección', items: [
+              { n: 'Av. O’Higgins 3419, Jardín Córdova', q: 'Av. O’Higgins 3419, Jardín Córdova, Córdoba, Argentina' },
+              { n: 'Ramón Ocampo 1620, barrio San Vicente', q: 'Ramón Ocampo 1620, barrio San Vicente, Córdoba, Argentina' }
+            ]
+          },
+          {
+            t: 'Municipalidades adheridas', items: [
+              { n: 'Municipalidad de Río Ceballos', q: 'Municipalidad de Río Ceballos, Córdoba, Argentina' },
+              { n: 'Municipalidad de Agua de Oro', q: 'Municipalidad de Agua de Oro, Córdoba, Argentina' },
+              { n: 'Municipalidad de La Para', q: 'Municipalidad de La Para, Córdoba, Argentina' },
+              { n: 'Municipalidad de San Antonio de Arredondo', q: 'Municipalidad de San Antonio de Arredondo, Córdoba, Argentina' }
+            ]
+          }
         ]
       },
       contact: {
@@ -1327,6 +1494,15 @@
           { i: 'scale', t: 'Asesoría Ley REP', d: 'Te guiamos en el cumplimiento de la Ley 20.920 de Responsabilidad Extendida del Productor, con metas claras y sin letra chica.' }
         ]
       },
+      materials: {
+        eyebrow: 'Qué reciclamos', title: '¿Qué reciclamos?',
+        sub: 'Recibimos una amplia variedad de residuos electrónicos provenientes de empresas. Todos estos dispositivos pueden tener una segunda vida a través del reciclaje responsable, aportando al cuidado del medio ambiente y promoviendo una gestión tecnológica sostenible.',
+        items: [
+          { i: 'monitor', t: 'Monitores' }, { i: 'box', t: 'Computadores' }, { i: 'laptop', t: 'Notebooks' }, { i: 'server', t: 'Servidores' },
+          { i: 'layers', t: 'Racks' }, { i: 'cable', t: 'Cables' }, { i: 'phone', t: 'Teléfonos' }, { i: 'route', t: 'Switches' },
+          { i: 'printer', t: 'Impresoras' }, { i: 'mobile', t: 'Celulares' }, { i: 'building', t: 'Centrales telefónicas' }, { i: 'battery', t: 'UPS' }
+        ]
+      },
       impact: {
         eyebrow: 'Nuestro impacto', title: 'Impacto ambiental que se puede medir',
         sub: 'Cada equipo reciclado cuenta. Estos son los resultados que hemos logrado junto a nuestros clientes.',
@@ -1355,8 +1531,8 @@
       about: {
         eyebrow: 'Sobre nosotros', title: 'Un equipo que convierte residuos en futuro',
         paras: [
-          'RAEE-Recycle nació con una convicción simple: la tecnología que ya no usas todavía tiene mucho valor que entregar. Somos especialistas en la recolección, transporte, clasificación y valorización de residuos de aparatos eléctricos y electrónicos.',
-          'Trabajamos con empresas, organismos públicos, colegios y universidades de Chile y Argentina, combinando procesos certificados, innovación permanente y un compromiso ambiental que se refleja en cada retiro.'
+          'RAEE-Recycle nació con una convicción simple: la tecnología que ya no usas todavía tiene mucho valor que entregar. Somos especialistas en la recolección, transporte, clasificación y valorización de residuos de aparatos eléctricos y electrónicos, y trabajamos con empresas, organismos públicos, colegios y universidades de Chile y Argentina, combinando procesos certificados, innovación permanente y un compromiso ambiental que se refleja en cada retiro.',
+          'Nacimos al alero de Fundación Caecuslab, donde comprobamos que reciclaje, accesibilidad y desarrollo humano pueden ir de la mano: parte de los equipos que recuperamos se reacondicionan y se transforman en Anny, los lentes inteligentes de Caecuslab que mejoran la autonomía de personas con discapacidad visual, mientras que otros se destinan a formaciones educativas, talleres digitales y proyectos comunitarios.'
         ],
         points: ['Más de una década de experiencia', 'Procesos certificados y auditables', 'Equipo técnico especializado', 'Innovación aplicada al reciclaje', 'Compromiso ambiental verificable', 'Cobertura nacional e internacional'],
         card1: 'años impulsando la economía circular', card2: 'países: Chile y Argentina'
@@ -1395,9 +1571,30 @@
         sub: 'Guías, novedades y buenas prácticas de gestión de residuos tecnológicos.',
         readMore: 'Leer más',
         posts: [
-          { cover: 'cv1', icon: 'recycle', cat: 'Educación ambiental', date: '15 de junio de 2026', t: '¿Qué son los residuos RAEE y por qué es importante reciclarlos?', d: 'Chile es uno de los países que más residuos electrónicos genera per cápita en Latinoamérica. Conoce qué son los RAEE, qué materiales contienen y por qué su reciclaje protege la salud y el medio ambiente.' },
-          { cover: 'cv2', icon: 'scale', cat: 'Ley REP', date: '30 de mayo de 2026', t: 'Cómo cumplir con la Ley REP en Chile: guía práctica para empresas', d: 'Metas de recolección, sistemas de gestión y obligaciones de productores e importadores: todo lo que tu empresa necesita saber para cumplir con la Ley 20.920 sin contratiempos.' },
-          { cover: 'cv3', icon: 'loop', cat: 'Economía circular', date: '11 de mayo de 2026', t: 'Beneficios ambientales y económicos de la economía circular', d: 'Reciclar no es solo cuidar el planeta: también reduce costos, recupera materiales valiosos y abre nuevas oportunidades de negocio. Descubre cómo aplicarla en tu organización.' }
+          { cover: 'cv1', icon: 'recycle', cat: 'Educación ambiental', date: '15 de junio de 2026', t: '¿Qué son los residuos RAEE y por qué es importante reciclarlos?', d: 'Chile es uno de los países que más residuos electrónicos genera per cápita en Latinoamérica. Conoce qué son los RAEE, qué materiales contienen y por qué su reciclaje protege la salud y el medio ambiente.',
+            body: [
+              'RAEE significa Residuos de Aparatos Eléctricos y Electrónicos: todo equipo que funciona con electricidad o baterías y que llegó al final de su vida útil. Computadores, notebooks, celulares, impresoras, monitores, cables y también electrodomésticos entran en esta categoría, una de las corrientes de residuos que más rápido crece a nivel mundial.',
+              'Chile es, según distintos estudios, uno de los países de Latinoamérica que más residuos electrónicos genera per cápita. Esto se explica por el alto nivel de digitalización del país, pero también evidencia la urgencia de contar con canales de reciclaje formales y accesibles para empresas y personas.',
+              'El problema no es solo el volumen: muchos de estos equipos contienen metales pesados como plomo, mercurio o cadmio que, si terminan en un vertedero sin tratamiento, pueden contaminar el suelo y las napas subterráneas durante años. Al mismo tiempo, contienen materiales valiosos como oro, cobre, plata y plásticos técnicos que pueden recuperarse y reinsertarse en nuevos procesos productivos.',
+              'Reciclar RAEE de forma correcta significa separarlos de la basura domiciliaria y entregarlos a gestores autorizados, que se encargan de clasificarlos, desarmarlos y darles el tratamiento adecuado a cada componente. Así se evita la contaminación y se recuperan recursos que de otro modo se perderían.',
+              'En RAEE-Recycle nos hacemos cargo de todo el proceso, desde el retiro hasta la certificación final, para que tu empresa u organización pueda sumarse a la economía circular sin complicaciones.'
+            ] },
+          { cover: 'cv2', icon: 'scale', cat: 'Ley REP', date: '30 de mayo de 2026', t: 'Cómo cumplir con la Ley REP en Chile: guía práctica para empresas', d: 'Metas de recolección, sistemas de gestión y obligaciones de productores e importadores: todo lo que tu empresa necesita saber para cumplir con la Ley 20.920 sin contratiempos.',
+            body: [
+              'La Ley 20.920, conocida como Ley REP (Responsabilidad Extendida del Productor), establece que los productores e importadores de determinados productos prioritarios, entre ellos los aparatos eléctricos y electrónicos, deben organizar y financiar la gestión de esos productos una vez que se convierten en residuos.',
+              'La ley fija metas de recolección y valorización que aumentan progresivamente cada año, y obliga a los productores a formar parte de un sistema de gestión colectivo o individual, encargado de asegurar que los residuos electrónicos que generan sus productos sean recolectados y tratados correctamente.',
+              'Para las empresas que no son productoras pero sí generadoras de RAEE en su operación diaria, cumplir con la ley significa entregar sus equipos en desuso a gestores autorizados que puedan garantizar trazabilidad y cumplimiento normativo, evitando así riesgos legales y reputacionales.',
+              'Contar con un certificado de disposición final es la mejor forma de acreditar ante auditorías, licitaciones y reportes de sustentabilidad que tu organización gestionó sus residuos electrónicos conforme a la Ley REP. Ese documento detalla qué equipos se retiraron, cuándo y qué tratamiento recibieron.',
+              'En RAEE-Recycle acompañamos a empresas de todo Chile para que cumplan con la Ley REP de forma simple, con trazabilidad completa y respaldo documental en cada retiro.'
+            ] },
+          { cover: 'cv3', icon: 'loop', cat: 'Economía circular', date: '11 de mayo de 2026', t: 'Beneficios ambientales y económicos de la economía circular', d: 'Reciclar no es solo cuidar el planeta: también reduce costos, recupera materiales valiosos y abre nuevas oportunidades de negocio. Descubre cómo aplicarla en tu organización.',
+            body: [
+              'La economía circular propone un cambio de enfoque: en lugar de fabricar, usar y desechar, busca que los productos y materiales permanezcan en uso el mayor tiempo posible. Aplicada a la tecnología, significa reparar, reacondicionar y reciclar equipos antes de pensar en descartarlos.',
+              'Los beneficios ambientales son directos: menos residuos en vertederos, menor extracción de materias primas vírgenes y una reducción real de la huella de carbono asociada a la fabricación de equipos nuevos. Cada tonelada de metales y plásticos recuperada es una tonelada que no es necesario extraer de la naturaleza.',
+              'Pero el impacto no es solo ambiental. Para las empresas, sumarse a la economía circular también tiene sentido económico: reduce costos de disposición de residuos, mejora los indicadores ESG que hoy exigen inversionistas y clientes, y en muchos casos abre la puerta a nuevas líneas de negocio ligadas a la sustentabilidad.',
+              'Además, mostrar un compromiso concreto con el reciclaje fortalece la marca empleadora y la reputación ante la comunidad, algo cada vez más valorado tanto por consumidores como por el talento que una organización busca atraer.',
+              'Sumar tu empresa a este modelo es más simple de lo que parece: basta con elegir un gestor autorizado, como RAEE-Recycle, que se haga cargo de todo el proceso y te entregue la trazabilidad y la documentación que necesitas.'
+            ] }
         ]
       },
       faq: {
@@ -1522,6 +1719,14 @@
       '<article class="card reveal" ' + stagger(i) + '><span class="card-icon">' + ICONS[it.i] + '</span><h3>' + it.t + '</h3><p>' + it.d + '</p></article>'
     ).join('');
 
+    /* Qué reciclamos */
+    $('#mt-eyebrow').textContent = t.materials.eyebrow;
+    $('#mt-title').textContent = t.materials.title;
+    $('#mt-sub').textContent = t.materials.sub;
+    $('#mt-grid').innerHTML = t.materials.items.map((it, i) =>
+      '<div class="sector reveal" ' + stagger(i) + '><span class="sector-icon">' + ICONS[it.i] + '</span><span>' + it.t + '</span></div>'
+    ).join('');
+
     /* Impacto */
     $('#im-eyebrow').textContent = t.impact.eyebrow;
     $('#im-title').textContent = t.impact.title;
@@ -1577,10 +1782,10 @@
     $('#bl-sub').textContent = t.blog.sub;
     $('#bl-grid').innerHTML = t.blog.posts.map((p, i) =>
       '<article class="post reveal" ' + stagger(i) + '>' +
-      '<div class="post-cover ' + p.cover + '" role="img" aria-label="' + p.t + '">' + ICONS[p.icon] + '</div>' +
+      '<div class="post-cover ' + p.cover + '" role="button" tabindex="0" aria-label="' + p.t + '" data-post="' + i + '">' + ICONS[p.icon] + '</div>' +
       '<div class="post-body"><div class="post-meta"><span class="post-cat">' + p.cat + '</span><span class="post-date">' + p.date + '</span></div>' +
       '<h3>' + p.t + '</h3><p>' + p.d + '</p>' +
-      '<a href="#blog" class="post-link">' + t.blog.readMore + ' ' + ICONS.arrow + '</a></div></article>'
+      '<a href="#blog" class="post-link" data-post="' + i + '">' + t.blog.readMore + ' ' + ICONS.arrow + '</a></div></article>'
     ).join('');
 
     /* FAQ */
@@ -1593,6 +1798,26 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>' +
       '</span></button><div class="faq-a"><div class="faq-a-inner"><p>' + f.a + '</p></div></div></div>'
     ).join('');
+
+    /* Puntos de reciclaje */
+    const rpSection = $('#puntos');
+    if (t.recyclingPoints) {
+      rpSection.style.display = '';
+      const rp = t.recyclingPoints;
+      $('#rp-eyebrow').textContent = rp.eyebrow;
+      $('#rp-title').textContent = rp.title;
+      $('#rp-sub').textContent = rp.sub;
+      $('#rp-map').src = 'https://www.google.com/maps?q=' + encodeURIComponent(rp.mapQuery) + '&output=embed';
+      $('#rp-list').innerHTML = rp.groups.map(g =>
+        '<div class="points-group"><h3>' + g.t + '</h3><ul>' +
+        g.items.map(it =>
+          '<li class="point-item"><span class="pin-icon">' + ICONS.pin + '</span>' +
+          '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(it.q) + '" target="_blank" rel="noopener">' + it.n + '</a></li>'
+        ).join('') + '</ul></div>'
+      ).join('');
+    } else {
+      rpSection.style.display = 'none';
+    }
 
     /* Contacto */
     $('#ct-eyebrow').textContent = t.contact.eyebrow;
@@ -1702,6 +1927,49 @@
     $$('#fq-list .faq-item.open').forEach(it => { it.classList.remove('open'); $('.faq-q', it).setAttribute('aria-expanded', 'false'); });
     if (!wasOpen) { item.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
   });
+
+  /* ---------- Modal de artículo de blog ---------- */
+  const pmOverlay = $('#post-modal-overlay'), pmModal = $('#post-modal');
+  let lastFocused = null;
+
+  function openPostModal(i) {
+    const post = CONTENT[currentCountry].blog.posts[i];
+    if (!post) return;
+    lastFocused = document.activeElement;
+    $('#pm-cover').className = 'post-modal-cover ' + post.cover;
+    $('#pm-cover-icon').innerHTML = ICONS[post.icon];
+    $('#pm-cat').textContent = post.cat;
+    $('#pm-date').textContent = post.date;
+    $('#pm-title').textContent = post.t;
+    $('#pm-content').innerHTML = (post.body || [post.d]).map(p => '<p>' + p + '</p>').join('');
+    pmOverlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    pmModal.scrollTop = 0;
+    pmModal.focus();
+  }
+
+  function closePostModal() {
+    pmOverlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    if (lastFocused) lastFocused.focus();
+  }
+
+  $('#bl-grid').addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-post]');
+    if (!trigger) return;
+    e.preventDefault();
+    openPostModal(parseInt(trigger.dataset.post, 10));
+  });
+  $('#bl-grid').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const trigger = e.target.closest('[data-post]');
+    if (!trigger) return;
+    e.preventDefault();
+    openPostModal(parseInt(trigger.dataset.post, 10));
+  });
+  $('#pm-close').addEventListener('click', closePostModal);
+  pmOverlay.addEventListener('click', (e) => { if (e.target === pmOverlay) closePostModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && pmOverlay.classList.contains('open')) closePostModal(); });
 
   /* ---------- Navbar dinámica + volver arriba ---------- */
   const nav = $('#nav'), toTop = $('#to-top');
