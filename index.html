@@ -1881,7 +1881,7 @@
     $('#ft-made').innerHTML = t.footer.credit + ' · Desarrollado por <a href="https://gestixpro.cl/" target="_blank" rel="noopener">GestixPro</a>';
 
     /* WhatsApp */
-    $('#whatsapp-fab').href = 'https://wa.me/5493516016158?text=' + encodeURIComponent('Hola, quiero información sobre sus servicios');
+    $('#whatsapp-fab').href = 'https://wa.me/5493516016158?text=' + encodeURIComponent('Contacto desde Raee-Recycle.com, quiero información sobre como reciclar');
 
     /* Animaciones de aparición para el contenido nuevo */
     observeReveals();
@@ -2069,16 +2069,21 @@
 
     const nombre = form.elements['nombre'].value.trim();
     const empresa = form.elements['empresa'].value.trim();
+    const telefono = form.elements['telefono'].value.trim();
+    const ciudad = form.elements['ciudad'].value.trim();
     const servicioSel = form.elements['servicio'];
     const servicio = servicioSel.options[servicioSel.selectedIndex] ? servicioSel.options[servicioSel.selectedIndex].text : '';
     const mensaje = form.elements['mensaje'].value.trim();
 
-    const waLines = [
-      'Hola, mi nombre es ' + nombre + '.',
+    const datosLines = [
+      'Nombre: ' + nombre,
       empresa ? 'Empresa/organización: ' + empresa : '',
-      servicio ? 'Servicio de interés: ' + servicio : '',
-      'Mensaje: ' + mensaje
+      'Teléfono: ' + telefono,
+      ciudad ? 'Ciudad: ' + ciudad : '',
+      servicio ? 'Servicio de interés: ' + servicio : ''
     ].filter(Boolean);
+
+    const waLines = ['Contacto desde Raee-Recycle.com', ''].concat(datosLines, ['', 'Mensaje: ' + mensaje]);
 
     window.open('https://wa.me/5493516016158?text=' + encodeURIComponent(waLines.join('\n')), '_blank', 'noopener');
     form.reset();
