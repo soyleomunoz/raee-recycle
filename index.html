@@ -617,6 +617,8 @@
       width: 100%;
     }
     .field textarea { resize: vertical; min-height: 110px; }
+    .field select { padding-right: 34px; }
+    .field select option { padding: 10px 16px; }
     .field input:focus, .field select:focus, .field textarea:focus {
       outline: none; border-color: var(--green); background: #fff; box-shadow: 0 0 0 4px rgba(22,163,74,.13);
     }
@@ -1126,7 +1128,7 @@
                 </div>
                 <span class="field-error"></span>
               </div>
-              <div class="field" data-f="servicio">
+              <div class="field full" data-f="servicio">
                 <label for="f-servicio"><span class="lab"></span> <span class="req">*</span></label>
                 <select id="f-servicio" name="servicio"></select>
                 <span class="field-error"></span>
