@@ -97,6 +97,10 @@
     /* ============ Reset ============ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    /* Móvil: sin desplazamiento horizontal de la página (red de seguridad) */
+    html, body { overflow-x: hidden; overscroll-behavior-x: none; }
+    html { touch-action: pan-y pinch-zoom; }
+    body { position: relative; width: 100%; }
     body {
       font-family: var(--font-body);
       color: var(--ink);
