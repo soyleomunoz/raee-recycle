@@ -337,6 +337,9 @@ def html_og(img_rel, kicker, titulo, pie, estilo=None, posicion='center', fondo_
     img = f'file://{os.path.join(ROOT, img_rel)}' if img_rel else ''
     fuentes = CFG.get('fuentes_html', '').replace('url(assets/', f'url(file://{ROOT}/assets/')
     fondo = (f'<img class="bg" src="{img}" style="object-position:{posicion}">' if img else '')
+    if img and estilo == 'lateral':
+        # Imagen recortada o de producto (PNG) a la derecha, texto a la izquierda
+        fondo = f'<img class="lat" src="{img}">'
     if img and (estilo or CFG.get('og_estilo', 'portada')) == 'portada':
         # La imagen para compartir es la misma portada, recortada a 1200x630
         return f'<!DOCTYPE html><html><head><meta charset="utf-8"><style>*{{margin:0}}body{{width:1200px;height:630px;overflow:hidden;background:{t["fondo"]}}}.bg{{width:100%;height:100%;object-fit:cover;display:block}}</style></head><body>{fondo}</body></html>'
@@ -345,13 +348,15 @@ def html_og(img_rel, kicker, titulo, pie, estilo=None, posicion='center', fondo_
 *{{margin:0;box-sizing:border-box}}body{{width:1200px;height:630px;overflow:hidden;position:relative;
 background:{fondo_css or 'linear-gradient(135deg,' + t['fondo'] + ',' + t['acento'] + ')'};font-family:{t['fuente_texto']}}}
 .bg{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}}
+.lat{{position:absolute;right:40px;top:40px;width:470px;height:550px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}}
+body.l .tx{{right:540px;bottom:auto;top:50%;transform:translateY(-50%)}}body.l .sh{{background:none}}
 .sh{{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 20%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.88))}}
 .tx{{position:absolute;left:64px;right:64px;bottom:56px;color:#fff}}
 .k{{display:inline-block;font-size:22px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:{t['acento']};color:{t.get('boton_texto', '#fff')};padding:8px 18px;border-radius:999px;margin-bottom:20px}}
 h1{{font-family:{t['fuente_titulos']};font-size:{tam}px;line-height:1.12;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.4);
 display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
 .p{{margin-top:22px;font-size:24px;font-weight:600;opacity:.92}}
-</style></head><body>{fondo}<div class="sh"></div><div class="tx">
+</style></head><body class="{'l' if img and estilo == 'lateral' else ''}">{fondo}<div class="sh"></div><div class="tx">
 {f'<span class="k">{E(kicker)}</span>' if kicker else ''}<h1>{E(titulo)}</h1><p class="p">{E(pie)}</p></div></body></html>'''
 
 
