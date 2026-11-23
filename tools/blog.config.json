@@ -1,0 +1,91 @@
+{
+  "site": "https://www.raee-recycle.com",
+  "nombre": "RAEE-Recycle",
+  "lang": "es-AR",
+  "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23166534'/%3E%3Cpath d='M32 14l7 12h-5v10h-4V26h-5l7-12zm-11 22l5 3-2.5 4.3c-1.2 2 .3 4.7 2.7 4.7H30v6h-3.8c-7 0-11.4-7.6-7.9-13.7L21 36zm22 0l2.7 4.3c3.5 6.1-.9 13.7-7.9 13.7H34v-6h3.8c2.4 0 3.9-2.6 2.7-4.7L38 39l5-3z' fill='%2338BDF8'/%3E%3C/svg%3E",
+  "ancla_blog": "#blog",
+  "logo_html": "RAEE<span style=\"color:#16A34A\">-Recycle</span>",
+  "nav": [
+    [
+      "Servicios",
+      "#servicios"
+    ],
+    [
+      "Nosotros",
+      "#nosotros"
+    ],
+    [
+      "Proceso",
+      "#proceso"
+    ],
+    [
+      "Blog",
+      "#blog"
+    ],
+    [
+      "Contacto",
+      "#contacto"
+    ]
+  ],
+  "cta": {
+    "titulo": "¿Tu organización tiene equipos en desuso?",
+    "texto": "Coordinamos el retiro, la destrucción certificada de datos y la trazabilidad final de tus residuos electrónicos.",
+    "boton": "Solicitar retiro",
+    "boton_corto": "Retiro",
+    "url": "https://wa.me/5493516016158?text=Hola%2C%20le%C3%AD%20su%20blog%20y%20quiero%20solicitar%20un%20retiro"
+  },
+  "fuentes_html": "<style id=\"local-fonts\">\n/* Tipografías alojadas en el sitio (Fontsource, licencia OFL) */\n@font-face{font-family:\"Space Grotesk\";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/space-grotesk-latin-500-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Space Grotesk\";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/space-grotesk-latin-600-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Space Grotesk\";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/space-grotesk-latin-700-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Inter\";font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/inter-latin-400-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Inter\";font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/inter-latin-500-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Inter\";font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/inter-latin-600-normal.woff2) format(\"woff2\")}\n@font-face{font-family:\"Inter\";font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/inter-latin-700-normal.woff2) format(\"woff2\")}\n</style>",
+  "tema": {
+    "fondo": "#F5F7FA",
+    "fondo2": "#FFFFFF",
+    "texto": "#374151",
+    "suave": "#64748B",
+    "acento": "#16A34A",
+    "acento2": "#0F4C81",
+    "borde": "#E4E9F0",
+    "titulos": "#1B2430",
+    "boton_texto": "#FFFFFF",
+    "cabecera": "#FFFFFF",
+    "cabecera_texto": "#1B2430",
+    "fuente_titulos": "'Space Grotesk','Inter',sans-serif",
+    "fuente_texto": "'Inter',system-ui,sans-serif"
+  },
+  "og_home": {
+    "imagen": null,
+    "kicker": "Reciclaje electrónico",
+    "titulo": "Gestión responsable de residuos RAEE para empresas e instituciones",
+    "fondo": "linear-gradient(135deg,#0E4A26,#0F4C81)"
+  },
+  "fuente": {
+    "literal": "CONTENT",
+    "ruta": "ar.blog.posts",
+    "formato": "parrafos",
+    "campos": {
+      "slug": "slug",
+      "titulo": "t",
+      "resumen": "d",
+      "categoria": "cat",
+      "fecha": "fecha",
+      "cuerpo": "body",
+      "portada": "",
+      "portada_alt": "",
+      "lectura": ""
+    },
+    "portada_patron": "img/blog/{slug}.jpg"
+  },
+  "llms": {
+    "resumen": "RAEE-Recycle gestiona residuos de aparatos eléctricos y electrónicos (RAEE) para empresas, instituciones y municipios en Argentina: retiro de equipos, destrucción certificada de discos rígidos, valorización de materiales, trazabilidad documental y campañas de reciclaje bajo un enfoque de economía circular.",
+    "datos": [
+      "Cobertura: Argentina",
+      "Contacto: WhatsApp +54 9 351 601-6158"
+    ],
+    "paginas": [
+      [
+        "Inicio",
+        "",
+        "servicios, impacto, nosotros, proceso, sectores, testimonios, blog, preguntas frecuentes y contacto"
+      ]
+    ],
+    "titulo_blog": "Blog"
+  }
+}
